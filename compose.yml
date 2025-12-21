@@ -11,7 +11,9 @@ services:
       - pgdata:/var/lib/postgresql/data
 
   web:
-    build: docker/.
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
     depends_on:
       - db
     ports:
