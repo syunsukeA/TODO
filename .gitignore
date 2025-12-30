@@ -33,3 +33,11 @@
 # Ignore key files for decrypting credentials and more.
 /config/*.key
 
+# Ignore vim swp file
+*.swp
+*.swo
+*.swn
+*.swm
+*.swl
+.*.swp
+
