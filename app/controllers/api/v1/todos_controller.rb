@@ -18,9 +18,9 @@ module Api
         limit = limit_from_params
         todos = Todo.order(created_at: :desc).limit(limit)
 
-        render json: { todos: todos.as_json(only: %i[id title created_at]) }, status: :ok
+        render json: { todos: todos.as_json(only: [ :id, :title, :created_at ]) }, status: :ok
       rescue ArgumentError, TypeError
-        render json: { errors: ["limit must be an integer between 1 and #{MAX_LIMIT}"] }, status: :bad_request
+        render json: { errors: [ "limit must be an integer between 1 and #{MAX_LIMIT}" ] }, status: :bad_request
       end
 
       private
