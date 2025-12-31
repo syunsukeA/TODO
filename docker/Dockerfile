@@ -13,10 +13,11 @@ RUN apt-get update && apt-get install -y \
 RUN gem update --system && gem update && gem install bundler
 
 COPY Gemfile Gemfile.lock ./
-RUN bundle install || true
+RUN bundle install
 
 COPY . .
 
-# EXPOSE 3000
-CMD ["bash", "-lc", "bin/rails s -b 0.0.0.0 -p 3000"]
+RUN chmod +x docker/entrypoint.sh
 
+ENTRYPOINT ["./docker/entrypoint.sh"]
+CMD ["bash", "-lc", "bin/rails s -b 0.0.0.0 -p 3000"]
